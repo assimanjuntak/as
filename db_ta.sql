@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2024 at 03:17 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Waktu pembuatan: 29 Nov 2022 pada 13.17
+-- Versi server: 10.4.25-MariaDB
+-- Versi PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_barang`
+-- Struktur dari tabel `tbl_barang`
 --
 
 CREATE TABLE `tbl_barang` (
@@ -37,10 +37,10 @@ CREATE TABLE `tbl_barang` (
   `spesifikasi_barang` text NOT NULL,
   `warna_barang` varchar(100) NOT NULL,
   `ukuran_barang` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_barang`
+-- Dumping data untuk tabel `tbl_barang`
 --
 
 INSERT INTO `tbl_barang` (`id_barang`, `foto_barang`, `nama_barang`, `harga_barang`, `stok_barang`, `deskripsi_barang`, `spesifikasi_barang`, `warna_barang`, `ukuran_barang`) VALUES
@@ -51,16 +51,16 @@ INSERT INTO `tbl_barang` (`id_barang`, `foto_barang`, `nama_barang`, `harga_bara
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_kategori`
+-- Struktur dari tabel `tbl_kategori`
 --
 
 CREATE TABLE `tbl_kategori` (
   `id_kategori` int(100) NOT NULL,
   `nama_kategori` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_kategori`
+-- Dumping data untuk tabel `tbl_kategori`
 --
 
 INSERT INTO `tbl_kategori` (`id_kategori`, `nama_kategori`) VALUES
@@ -71,29 +71,28 @@ INSERT INTO `tbl_kategori` (`id_kategori`, `nama_kategori`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_review`
+-- Struktur dari tabel `tbl_review`
 --
 
 CREATE TABLE `tbl_review` (
   `id_review` int(100) NOT NULL,
   `isi_review` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_review`
+-- Dumping data untuk tabel `tbl_review`
 --
 
 INSERT INTO `tbl_review` (`id_review`, `isi_review`) VALUES
 (1, 'Seragam disini nyaman dipakai semua'),
 (2, 'Seragam disini harganya terjangkau oleh kantong pelajar'),
 (3, 'Seragamnya lucu lucu'),
-(4, 'seragam grafika cakep'),
-(7, 'Harga murah dan kualitas oke');
+(4, 'seragam grafika cakep');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_transaksi`
+-- Struktur dari tabel `tbl_transaksi`
 --
 
 CREATE TABLE `tbl_transaksi` (
@@ -107,12 +106,12 @@ CREATE TABLE `tbl_transaksi` (
   `id_refund` int(100) NOT NULL,
   `alasan_refund` text NOT NULL,
   `keterangan_refund` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_user`
+-- Struktur dari tabel `tbl_user`
 --
 
 CREATE TABLE `tbl_user` (
@@ -122,10 +121,10 @@ CREATE TABLE `tbl_user` (
   `nomor_telepon` varchar(100) NOT NULL,
   `password` varchar(100) DEFAULT NULL,
   `level` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_user`
+-- Dumping data untuk tabel `tbl_user`
 --
 
 INSERT INTO `tbl_user` (`username`, `nama`, `email`, `nomor_telepon`, `password`, `level`) VALUES
@@ -133,104 +132,67 @@ INSERT INTO `tbl_user` (`username`, `nama`, `email`, `nomor_telepon`, `password`
 ('althea', 'althea', 'althea@gmail.com', '086719391', '030c5f71c737e8c6af920ec09f82126d', 'user'),
 ('purnomo12', 'purnomo', 'purnomo@gmail.com', '086791243799', '030c5f71c737e8c6af920ec09f82126d', 'user');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
-CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL,
-  `username` varchar(100) NOT NULL,
-  `password` varchar(254) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `token` char(128) DEFAULT NULL,
-  `status` char(1) DEFAULT NULL,
-  `last_login` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`user_id`, `username`, `password`, `email`, `token`, `status`, `last_login`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'roberto.kakaban@yahoo.com', '00f453a6842f1883ca3be7b31a6626f0', '1', '2023-11-24 14:17:52');
-
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `tbl_barang`
+-- Indeks untuk tabel `tbl_barang`
 --
 ALTER TABLE `tbl_barang`
   ADD PRIMARY KEY (`id_barang`);
 
 --
--- Indexes for table `tbl_kategori`
+-- Indeks untuk tabel `tbl_kategori`
 --
 ALTER TABLE `tbl_kategori`
   ADD PRIMARY KEY (`id_kategori`);
 
 --
--- Indexes for table `tbl_review`
+-- Indeks untuk tabel `tbl_review`
 --
 ALTER TABLE `tbl_review`
   ADD PRIMARY KEY (`id_review`);
 
 --
--- Indexes for table `tbl_transaksi`
+-- Indeks untuk tabel `tbl_transaksi`
 --
 ALTER TABLE `tbl_transaksi`
   ADD PRIMARY KEY (`id_transaksi`);
 
 --
--- Indexes for table `tbl_user`
+-- Indeks untuk tabel `tbl_user`
 --
 ALTER TABLE `tbl_user`
   ADD PRIMARY KEY (`username`);
 
 --
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `username` (`username`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `tbl_barang`
+-- AUTO_INCREMENT untuk tabel `tbl_barang`
 --
 ALTER TABLE `tbl_barang`
   MODIFY `id_barang` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `tbl_kategori`
+-- AUTO_INCREMENT untuk tabel `tbl_kategori`
 --
 ALTER TABLE `tbl_kategori`
   MODIFY `id_kategori` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `tbl_review`
+-- AUTO_INCREMENT untuk tabel `tbl_review`
 --
 ALTER TABLE `tbl_review`
-  MODIFY `id_review` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_review` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `tbl_transaksi`
+-- AUTO_INCREMENT untuk tabel `tbl_transaksi`
 --
 ALTER TABLE `tbl_transaksi`
   MODIFY `id_transaksi` int(100) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
